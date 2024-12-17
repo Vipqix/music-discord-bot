@@ -55,9 +55,10 @@ Discord.py library and other packages
    
 # 5. 📝 **Commands**
 ```
-/play <song> - Play a song from YouTube
+/play <song>  - Play a song from YouTube
 /queue [song] - View queue or add a song
-/help - Show all commands
+/help         - Show all commands
+/disconnect   - disconnects the bot from the voice channel
 ```
 
 # 6. ❌ **Common Errors**
