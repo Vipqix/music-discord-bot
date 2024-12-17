@@ -285,6 +285,11 @@ async def help(interaction: discord.Interaction):
             "name": "/help",
             "description": "Shows this help message",
             "usage": "/help"
+        },
+        {
+            "name": "/disconnect",
+            "description": "Disconnect the bot from the voice channel",
+            "usage": "/disconnect"
         }
     ]
     
@@ -297,5 +302,16 @@ async def help(interaction: discord.Interaction):
     
     embed.set_footer(text="[] = optional parameter, <> = required parameter")
     await interaction.response.send_message(embed=embed)
+
+@tree.command(name="disconnect", description="Disconnect the bot from the voice channel")
+async def disconnect(interaction: discord.Interaction):
+    voice_client = interaction.guild.voice_client
+    if voice_client:
+        await voice_client.disconnect()
+        embed = await create_basic_embed("Disconnected", "Disconnected from voice channel")
+        await interaction.response.send_message(embed=embed)
+    else:
+        embed = await create_basic_embed("Error", "Not connected to a voice channel!", discord.Color.red())
+        await interaction.response.send_message(embed=embed)
 
 client.run(TOKEN)
